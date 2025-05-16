@@ -139,7 +139,7 @@ class VrHeader extends React.Component {
     else {
       ExecutionDate = TExecutionDate;
     }
-    if (TExecTime == null) {
+    if (TExecTime === null || TExecTime === "null") {
       execTime = '00:00';
     }
     else {

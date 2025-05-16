@@ -6234,6 +6234,8 @@ class Dashboard extends Component {
               currDoc.time = convertSecToMin(currTask.duration);
               currDoc.distance = currTask.distance ? (currTask.distance / 1609.344) : 0;
               currDoc.end = secondsToHms(currTask.arrival + currTask.service + currTask.waiting_time);
+              currDoc.startDate = currDoc.docdate;
+              currDoc.endDate = currDoc.docdate;
               ttime = currDoc.arrival;
               if (currDoc.doctype === 'PRECEIPT') {
                 pickups = pickups + 1;

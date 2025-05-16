@@ -208,7 +208,7 @@ class VrStops3 extends React.Component {
                                     (this.props.vedetail || []).map((doc, i) => (
                                         <tr class="bg-blue" key={i}>
                                             <td ></td>
-                                            <td><span className="LS-default">{this.displayBadge(doc.xdoctyp, doc.sequence)}</span></td>
+                                            <td><span className="LS-default">{this.displayBadge(doc.xdoctyp, doc.sequence - 1)}</span></td>
                                             <td>{this.documentBadgeLink(doc.sdhnum, doc.xdoctyp)}</td>
 
                                             <td >{this.GetDeliveryStatus(doc.xdlv_status)}</td>
@@ -231,7 +231,7 @@ class VrStops3 extends React.Component {
                                         return (
                                             <tr class="bg-blue" key={i}>
                                                 <td ></td>
-                                                <td><span className="LS-default">{i + 2}</span></td>
+                                                <td><span className="LS-default">{i + 1}</span></td>
                                                 <td>{doc.docnum}</td>
                                                 <td>-</td>
                                                 <td></td>
