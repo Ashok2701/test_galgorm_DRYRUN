@@ -520,6 +520,9 @@ class Drops3 extends React.Component {
                                     {this.props.t('Client')} {this.props.dropOrder[2] === 1 ? "▼" : "▲"}
                                 </th>
                                 <th>
+                                    {this.props.t('Add Code')}
+                                </th>
+                                <th>
                                     {this.props.t('Address')}
                                 </th>
                                 <th onClick={() => this.props.sortDrop('poscode', 4)}>
@@ -543,12 +546,6 @@ class Drops3 extends React.Component {
                                 </th>
 
                                 <th>{this.props.t('tripno')} </th>
-
-
-
-                                <th>
-                                    {this.props.t('Add Code')}
-                                </th>
 
                                 {/* <th onClick = { () => this.props.sortDrop('netweight', 5)}>
                                                                         Mass {this.props.dropOrder[5] === 1 ? "▼" : "▲"}
@@ -623,6 +620,7 @@ class Drops3 extends React.Component {
                                             <td> <a href="#"
                                                 onClick={() => this.onInfoClick(logisticDetails, drops.docnum)}>
                                                 {drops.bpname} </a></td>
+                                            <td>{drops.adrescode}</td>
                                             <td>{drops.adresname}</td>
                                             <td>{drops.poscode}, {drops.city}</td>
                                             <td>{drops.site}</td>
@@ -634,8 +632,6 @@ class Drops3 extends React.Component {
                                             <td>{drops.drivercode}</td>
 
                                             <td>{drops.tripno === '0' ? "" : drops.tripno}</td>
-
-                                            <td>{drops.adrescode}</td>
                                             {/* <td>{drops.doctype ? drops.doctype : drops.movtype}</td> */}
 
                                             {/* <td>{drops.netweight} {drops.weightunit}</td>
