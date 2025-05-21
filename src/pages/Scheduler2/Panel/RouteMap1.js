@@ -723,9 +723,10 @@ class RouteMap extends React.Component {
                                     <th width="6%">{this.props.t('Type')}</th>
                                     <th width="6%">{this.props.t('Site')}</th>
                                     <th width="6%">Priority</th>
-                                    <th width="6%">Ship To</th>
                                     <th width="6%">{this.props.t('Client Code')}</th>
                                     <th width="6%">{this.props.t('Client')}</th>
+                                    <th width="6%">Ship To</th>
+                                    <th width="6%">Address</th>
                                     <th width="6%">{this.props.t('postal City')}</th>
                                     <th width="6%">{this.props.t('Weight')}</th>
                                     <th width="6%">{this.props.t('Volume')}</th>
@@ -790,9 +791,10 @@ class RouteMap extends React.Component {
                                             </td>
                                             <td width="6%">{data.site}</td>
                                             <td width="3%">{this.displayPriority(data)}</td>
-                                            <td width="6%">{data.adrescode}</td>
                                             <td width="6%">{data.bpcode}</td>
                                             <td width="6%">{data.bpname}</td>
+                                            <td width="6%">{data.adrescode}</td>
+                                            <td width="6%">{data.adresname}</td>
                                             <td width="6%">{data.poscode} , {data.city}</td>
                                             <td width="6%">{data.netweight} {data.weightunit}</td>
                                             <td width="6%">{data.volume} {data.volume_unit}</td>
