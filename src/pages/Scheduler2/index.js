@@ -2871,8 +2871,18 @@ class Dashboard extends Component {
 
         ToAllocationSubmitData(vrcode)
           .then(res => {
-            console.log("after soap completes The result is Allocation data", res);
-            //    if(statuscode == 200) {
+            console.log("after soap completes The result is Allocation data", );
+
+            let XSTAflg = res.children[0].children[1].value;
+         
+            if(XSTAflg == 3){
+              this.notifyError("Allocation failed because the pick ticket contains products with an 'R' status. Please refer to the log file in X3 for further details")
+              this.setState({
+      loader: false
+    });
+
+            }else{
+                 //    if(statuscode == 200) {
             console.log("status code if")
             this.notifySucess("Allocation Sucessfully Completed");
             //      var tripsPanels = this.state.tripsPanel;
@@ -2891,6 +2901,7 @@ class Dashboard extends Component {
               console.log("allocation else data")
               this.ToAllocationGetDatafromVR(vrcode, site, 'allocation');
               // this.onVrRefresh(vrcode);
+            }
             }
           });
       }
@@ -6981,9 +6992,9 @@ class Dashboard extends Component {
     await this.confirmTrip(routesSchedule.trips, "route", routesSchedule, newGeoData);
   }
 
-  notifySucess = (message) => toast.success(message, { autoClose: 3000 });
+  notifySucess = (message) => toast.success(message, { autoClose: 5000 });
 
-  notifyError = (message) => toast.error(message, { autoClose: 3000 });
+  notifyError = (message) => toast.error(message, { autoClose: 5000 });
 
 
   render() {

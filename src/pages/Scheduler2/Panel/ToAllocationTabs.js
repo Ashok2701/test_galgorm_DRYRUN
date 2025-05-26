@@ -394,7 +394,7 @@ class LVSToAllocationTabs extends React.Component {
 
 
   render() {
-    console.log("allocation stagging location", this.props.toStaggingLocationList);
+    console.log("allocation stagging location", this.props.vrdata.allocationflg);
 
     let filterDetailedProd;
     let filterGlobalProd;

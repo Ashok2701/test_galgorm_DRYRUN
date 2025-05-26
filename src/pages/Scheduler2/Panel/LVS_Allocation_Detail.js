@@ -30,6 +30,8 @@ constructor(props)
     render() {
     //   console.log("allocation data", this.props.toAllocationDataList);
 
+    console.log(this.props.toAllocationDataList ,"this is allocaiton list checking here")
+
            return (
               <Modal className="LvsModalscreen"
                      {...this.props}
