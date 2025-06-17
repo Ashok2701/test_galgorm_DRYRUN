@@ -1084,15 +1084,15 @@ class Dashboard extends Component {
     // console.log("T11 sync,inside handleDatechagne",date);
 
     let dayWiseDate = this.schedulerRef.current.props.selectedDate;
-    console.log("TLLL inside at fetchdocuDAte change - dayWiseDate",dayWiseDate);
+    console.log("TLLL inside at fetchdocuDAte change - dayWiseDate", dayWiseDate);
 
     let value = this.state.selectedMultipleSites
 
     let formatedDate = date && moment.tz(date, '').format('YYYY-MM-DD');
 
-    let dayWiseFormatedDate =  moment.tz(dayWiseDate, '').format('YYYY-MM-DD');
+    let dayWiseFormatedDate = moment.tz(dayWiseDate, '').format('YYYY-MM-DD');
 
-    console.log(formatedDate , dayWiseFormatedDate ,"formattingg date")
+    console.log(formatedDate, dayWiseFormatedDate, "formattingg date")
 
     fetchDocumentPanelAPI(value, formatedDate ? formatedDate : dayWiseFormatedDate)
       .then(([res1, res2]) => {
@@ -1396,7 +1396,7 @@ class Dashboard extends Component {
   }
 
   changeDateatDocumentPanel = (dayflag) => {
-    this.setState({ loader: true})
+    this.setState({ loader: true })
     // console.log("Tttt inside chagneDateatDocPanel =",dayflag);
     var flagconsider = dayflag;
     var currDate = moment(this.state.documentPanel_date).add(0, 'days');
@@ -1428,7 +1428,7 @@ class Dashboard extends Component {
     else {
       // console.log("Tttt inside changeDAte checked5days false");
 
-      console.log(newDate ,"checking new date after formating things")
+      console.log(newDate, "checking new date after formating things")
 
       // console.log("T21 inside chageDAte");
       fetchDocumentPanelAPI(this.state.selectedMultipleSites, newDate)
@@ -1834,7 +1834,7 @@ class Dashboard extends Component {
     });
     console.log("TLLL at the end of refreshAllPanels")
     // if (!this.state.documentPanel_dateflg) {
-      this.handleDateRangeChange();
+    this.handleDateRangeChange();
     // }
   }
 
@@ -2010,7 +2010,7 @@ class Dashboard extends Component {
     const events = this.schedulerRef;
     console.log("TLLLL insdie handleDateChagnge -", events);
     const clickedDate = this.schedulerRef.current.scheduleObj.selectedDate;
-    
+
     let clickedDateinFormat = moment.tz(clickedDate, '').local().format("YYYY-MM-DD");
     console.log("TLLLL insdie handleDateChagnge date -1", clickedDate, clickedDateinFormat, this.state.date);
     console.log("TLLLL insdie handleDateChagnge date -2", this.state.documentPanel_date);
@@ -2029,7 +2029,7 @@ class Dashboard extends Component {
       if (this.schedulerRef.current.scheduleObj.currentView === 'TimelineWorkWeek') {
 
 
-        console.log("insdie handleDateChagnge selected week -",this.schedulerRef.current.scheduleObj.currentView);
+        console.log("insdie handleDateChagnge selected week -", this.schedulerRef.current.scheduleObj.currentView);
         [sunday, satday] = this.startAndEndOfWeek(clickedDate);
         var StartDate = moment.tz(sunday, '').local().format("YYYY-MM-DD");
         var EndDate = moment.tz(satday, '').local().format("YYYY-MM-DD");
@@ -2062,12 +2062,12 @@ class Dashboard extends Component {
             this.refreshSite();
             this.removeDocsCheckBoxes();
           }).catch(error => {
-            this.setState({ loader: false})
+            this.setState({ loader: false })
           });
       }
       else {
 
-        console.log("insdie handleDateChagnge selected Day -",this.schedulerRef.current.scheduleObj.currentView);
+        console.log("insdie handleDateChagnge selected Day -", this.schedulerRef.current.scheduleObj.currentView);
 
 
         fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, clickedDateinFormat)
@@ -2099,38 +2099,38 @@ class Dashboard extends Component {
 
       }
 
-    }else{
+    } else {
 
-      console.log(clickedDateinFormat ,"2097 date send")
+      console.log(clickedDateinFormat, "2097 date send")
       fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, clickedDateinFormat)
-      .then(([res1, res2, res3, res4]) => {
-        this.setState({
-          vehiclePanel: res1,
-          docsPanel: res2,
-          tripsPanel: res3,
-          loader: false,
-          RouteCode: res4,
-          date: clickedDate,
-          // documentPanel_dateflg: false,
-          // documentPanel_date: "",
-          // documentPanel_5dayscheck: false,
-          SelectedDeletedDocs: [],
-          selectedDocumentList: [],
-          filteredTripData: "",
-        });
-      })
+        .then(([res1, res2, res3, res4]) => {
+          this.setState({
+            vehiclePanel: res1,
+            docsPanel: res2,
+            tripsPanel: res3,
+            loader: false,
+            RouteCode: res4,
+            date: clickedDate,
+            // documentPanel_dateflg: false,
+            // documentPanel_date: "",
+            // documentPanel_5dayscheck: false,
+            SelectedDeletedDocs: [],
+            selectedDocumentList: [],
+            filteredTripData: "",
+          });
+        })
 
-      .then(() => {
-        this.updateTopBar();
-        this.refreshSite();
-        this.removeDocsCheckBoxes();
-      })
-      .catch((error) => {
-        this.setState({ loader: false })
-      });
+        .then(() => {
+          this.updateTopBar();
+          this.refreshSite();
+          this.removeDocsCheckBoxes();
+        })
+        .catch((error) => {
+          this.setState({ loader: false })
+        });
     }
 
-    console.log(this.state.loader ,"this is loader after handle date cha")
+    console.log(this.state.loader, "this is loader after handle date cha")
   }
 
   handleRouteCodeChange = selectedRouteCodes => {
@@ -2186,7 +2186,7 @@ class Dashboard extends Component {
     }
     else {
 
-      console.log(currDate ,"this is currdate 2182")
+      console.log(currDate, "this is currdate 2182")
       fetchSchedulerAPIOneDate(selectedOption, currDate)
         .then(([res1, res2, res3, res4]) => {
           this.setState({
@@ -2206,7 +2206,7 @@ class Dashboard extends Component {
           this.removeDocsCheckBoxes();
         })
         .catch((error) => {
-          this.setState({ loader: false})
+          this.setState({ loader: false })
         });
 
     }
@@ -2355,7 +2355,7 @@ class Dashboard extends Component {
     this.setState({ loader: true });
     console.log("TLLL sync,inside handleDatechagne", date);
     const currDate = moment.tz(date, '').format('YYYY-MM-DD');
-    console.log("T11 sync,inside handleDatechagne",currDate);
+    console.log("T11 sync,inside handleDatechagne", currDate);
 
     let value = this.state.selectedMultipleSites
     fetchSchedulerAPIOneDate(value, currDate)
@@ -2871,37 +2871,43 @@ class Dashboard extends Component {
 
         ToAllocationSubmitData(vrcode)
           .then(res => {
-            console.log("after soap completes The result is Allocation data", );
 
             let XSTAflg = res.children[0].children[1].value;
-         
-            if(XSTAflg == 3){
-              this.notifyError("Allocation failed because the pick ticket contains products with an 'R' status. Please refer to the log file in X3 for further details")
+            let errorMsg = res.children[0]?.children[2]?.value;
+            console.log("after soap completes The result is Allocation data", res);
+
+            console.log("after soap completes The result is Allocation 1", res.children[0]);
+            console.log("after soap completes The result is Allocation 2", res.children[0].children[0]);
+            console.log("after soap completes The result is Allocation 3", res.children[0].children[1]);
+            console.log("after soap completes The result is Allocation 3", res.children[0].children[2]);
+
+            if (XSTAflg == 3) {
+              this.notifyError(errorMsg)
               this.setState({
-      loader: false
-    });
+                loader: false
+              });
 
-            }else{
-                 //    if(statuscode == 200) {
-            console.log("status code if")
-            this.notifySucess("Allocation Sucessfully Completed");
-            //      var tripsPanels = this.state.tripsPanel;
-            // var selVR_num = tripsPanels[i].itemCode;
-            //  fetchVR(selVR_num)
-            //     }
+            } else {
+              //    if(statuscode == 200) {
+              console.log("status code if")
+              this.notifySucess("Allocation Sucessfully Completed");
+              //      var tripsPanels = this.state.tripsPanel;
+              // var selVR_num = tripsPanels[i].itemCode;
+              //  fetchVR(selVR_num)
+              //     }
 
-            //this.onVrRefresh(vrcode);
-            //  this.ToAllocationGetDatafromVR(vrcode, site);
-            if (this.state.StaggingFromLoc2.length > 0) {
-              console.log("allocation if data")
-              this.getDatabyStaggingLocations(vrcode, 'allocation');
-              //  this.onVrRefresh(vrcode);
-            }
-            else {
-              console.log("allocation else data")
-              this.ToAllocationGetDatafromVR(vrcode, site, 'allocation');
-              // this.onVrRefresh(vrcode);
-            }
+              //this.onVrRefresh(vrcode);
+              //  this.ToAllocationGetDatafromVR(vrcode, site);
+              if (this.state.StaggingFromLoc2.length > 0) {
+                console.log("allocation if data")
+                this.getDatabyStaggingLocations(vrcode, 'allocation');
+                //  this.onVrRefresh(vrcode);
+              }
+              else {
+                console.log("allocation else data")
+                this.ToAllocationGetDatafromVR(vrcode, site, 'allocation');
+                // this.onVrRefresh(vrcode);
+              }
             }
           });
       }
@@ -3802,8 +3808,8 @@ class Dashboard extends Component {
                   this.setState({ loader: false });
                 }
               }
-                        // After ConfirmLVS completes, execute postLoadtoTruck
-          return postLoadtoTruck(vrcode); // Return the postLoadtoTruck promise
+              // After ConfirmLVS completes, execute postLoadtoTruck
+              return postLoadtoTruck(vrcode); // Return the postLoadtoTruck promise
             })
 
             .then(res => {
@@ -4625,9 +4631,9 @@ class Dashboard extends Component {
 
     else {
 
-      console.log(currDate ,"else current date checking")
+      console.log(currDate, "else current date checking")
       fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, currDate)
-      // fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, this.state.documentPanel_date)
+        // fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, this.state.documentPanel_date)
         .then(([res1, res2, res3, res4]) => {
           this.setState({
             vehiclePanel: res1,
@@ -6808,7 +6814,7 @@ class Dashboard extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(trips)
     }).then((response) => {
-      console.log("inside after trip - response",response);
+      console.log("inside after trip - response", response);
       this.handleErrors(response);
       this.reloadTrips();
       this.fetchDocumentPanelDateChange(this.state.documentPanel_date)
@@ -6883,7 +6889,7 @@ class Dashboard extends Component {
       this.reloadTrips();
       //  this.handlePanelsUpdate(currDate);
 
-      console.log(this.state.documentPanel_date ,"this is current date checking")
+      console.log(this.state.documentPanel_date, "this is current date checking")
       this.fetchDocumentPanelDateChange(this.state.documentPanel_date)
       this.notifySucess("Trip deleted Sucessfully");
       this.onRouteoptihide();
@@ -7233,7 +7239,7 @@ class Dashboard extends Component {
                 <Row className="mt-3">
                   <Col md="6">
                     <DocumentsPanel
-                    currentView={this.state.currentViewCheck}
+                      currentView={this.state.currentViewCheck}
                       checkedToPlan={this.checkedToPlan}
                       filteredTripsData={this.filteredTripsData}
                       filteredTripData={this.state.filteredTripData}
