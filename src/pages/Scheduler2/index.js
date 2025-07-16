@@ -2039,6 +2039,7 @@ class Dashboard extends Component {
 
         fetchSchedulerAPI(this.state.selectedMultipleSites, StartDate, EndDate)
           .then(([res1, res2, res3, res4]) => {
+              requestIdleCallback(() => {
             this.setState({
               vehiclePanel: res1,
               docsPanel: res2,
@@ -2057,6 +2058,7 @@ class Dashboard extends Component {
               searchTripString: '', // docsPanel: res1,
 
             });
+          });
           }).then(() => {
             this.updateTopBar();
             this.refreshSite();
@@ -2072,6 +2074,7 @@ class Dashboard extends Component {
 
         fetchSchedulerAPIOneDate(this.state.selectedMultipleSites, clickedDateinFormat)
           .then(([res1, res2, res3, res4]) => {
+              requestIdleCallback(() => {
             this.setState({
               vehiclePanel: res1,
               docsPanel: res2,
@@ -2086,6 +2089,7 @@ class Dashboard extends Component {
               selectedDocumentList: [],
               filteredTripData: "",
             });
+          });
           })
 
           .then(() => {
@@ -2165,7 +2169,7 @@ class Dashboard extends Component {
     if (this.schedulerRef.current.scheduleObj.currentView === 'TimelineWorkWeek') {
       fetchSchedulerAPI(selectedOption, StartDate, EndDate)
         .then(([res1, res2, res3, res4]) => {
-
+  requestIdleCallback(() => {
           this.setState({
             vehiclePanel: res1,
             docsPanel: res2,
@@ -2179,6 +2183,7 @@ class Dashboard extends Component {
 
 
           });
+        });
         }).then(() => {
           this.updateTopBar();
           this.refreshSite();
@@ -2189,6 +2194,7 @@ class Dashboard extends Component {
       console.log(currDate, "this is currdate 2182")
       fetchSchedulerAPIOneDate(selectedOption, currDate)
         .then(([res1, res2, res3, res4]) => {
+            requestIdleCallback(() => {
           this.setState({
             vehiclePanel: res1,
             docsPanel: res2,
@@ -2199,6 +2205,7 @@ class Dashboard extends Component {
             selectedDocumentList: [],
 
           });
+        });
         })
         .then(() => {
           this.updateTopBar();
@@ -2365,7 +2372,7 @@ class Dashboard extends Component {
                    this.setState({loading: false})
           }
           */
-
+  requestIdleCallback(() => {
         this.setState({
           date: currDate,
           default_date: currDate,
@@ -2388,6 +2395,7 @@ class Dashboard extends Component {
           tripsPanel: res3,
           loader: false,
         });
+      });
       }).then(() => {
         this.updateTopBar();
         this.refreshSite();
@@ -2453,12 +2461,14 @@ class Dashboard extends Component {
     }
     fetchVR(selVR_num)
       .then(([res1, res2, res3]) => {
+          requestIdleCallback(() => {
         this.setState({
           vrlist: res1,
           vrdetaillist: res2,
           loadvehstock: res3,
           loader: false
         });
+      });
       }).then(() => {
       }).catch(error => {
         //  history.push('/');
@@ -2963,6 +2973,7 @@ class Dashboard extends Component {
   onVrRefresh = (vrnum) => {
     fetchVR(vrnum)
       .then(([res1, res2, res3]) => {
+         requestIdleCallback(() => {
         this.setState({
           vrlist: res1,
           vrdetaillist: res2,
@@ -2970,6 +2981,7 @@ class Dashboard extends Component {
           loader: false
 
         });
+      });
       }).then(() => {
       }).catch(error => {
         // history.push('/');
